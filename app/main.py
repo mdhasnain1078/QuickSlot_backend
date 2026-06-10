@@ -37,6 +37,14 @@ setup_exception_handlers(app)
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
+@app.get("/")
+def root_endpoint():
+    return {
+        "success": True, 
+        "message": "Welcome to the QuickSlot API. The API is live and running!", 
+        "docs": "Visit /docs for Swagger UI"
+    }
+
 @app.get("/health-check")
 def health_check():
     return {"status": "ok"}
